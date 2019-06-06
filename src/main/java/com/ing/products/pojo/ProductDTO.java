@@ -16,8 +16,6 @@ import lombok.ToString;
 @Setter
 @Getter
 @NoArgsConstructor
-@ToString
-@AllArgsConstructor
 public class ProductDTO implements Serializable {
 	
 	/**
