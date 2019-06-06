@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ing.products.exception.DataNotFoundException;
 import com.ing.products.pojo.ProductGroupDTO;
 import com.ing.products.service.ProductGroupService;
 
@@ -39,6 +40,9 @@ public class ProductGroupController {
 	public ResponseEntity<List<ProductGroupDTO>> getProductGroups() {
 		LOGGER.info("ProductGroupController inside getProductGroups");
 		List<ProductGroupDTO> response = productGroupService.getProductGroups();
+		if (response ==null ||response.isEmpty() ||response.size()==0) {
+			throw new DataNotFoundException("Data not found");
+		}
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
