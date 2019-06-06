@@ -24,16 +24,16 @@ public class ProductGroupServiceImpl implements ProductGroupService {
 	@Autowired
 	ProductGroupRepository productGroupRepository;
 	@Override
-	public List< ProductGroupDTO> getProductGroups() {
+	public List<ProductGroupDTO> getProductGroups() {
 		LOGGER.info("inside getProductGroups");
-		List<ProductGroupDTO> productGroupDTOlist = new ArrayList<ProductGroupDTO>();
+		List<ProductGroupDTO> productGroupDTOlist = new ArrayList<>();
 		List <ProductGroup>productGroupList =  productGroupRepository.findAll(new Sort(Sort.Direction.DESC,"count"));
 		for(ProductGroup productGroup:productGroupList) {
-			ProductGroupDTO ProductGroupDTO = new ProductGroupDTO();
-			ProductGroupDTO.setGroupId(productGroup.getGroupId());
-			ProductGroupDTO.setGroupName(productGroup.getGroupName());
-			ProductGroupDTO.setGroupCount(productGroup.getCount());
-			productGroupDTOlist.add(ProductGroupDTO);
+			ProductGroupDTO productGroupDTO = new ProductGroupDTO();
+			productGroupDTO.setGroupId(productGroup.getGroupId());
+			productGroupDTO.setGroupName(productGroup.getGroupName());
+			productGroupDTO.setGroupCount(productGroup.getCount());
+			productGroupDTOlist.add(productGroupDTO);
 		}
 		
 		return productGroupDTOlist;
