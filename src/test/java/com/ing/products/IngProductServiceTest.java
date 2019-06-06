@@ -22,6 +22,7 @@ import com.ing.products.service.ProductServiceImpl;
 @SuppressWarnings(value = { "all" })
 public class IngProductServiceTest {
 	
+	
 	@Mock
 	ProductRepository repository;
 	@InjectMocks
