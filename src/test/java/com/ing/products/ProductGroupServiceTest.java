@@ -9,6 +9,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.ing.products.entity.ProductGroup;
@@ -34,7 +35,7 @@ public class ProductGroupServiceTest {
 		productGroup.setGroupId(2l);
 		productGroup.setGroupName("Mortgage");
 		productGroupList.add(productGroup);
-		Mockito.when(productGroupRepository.findAll()).thenReturn(productGroupList);
+		Mockito.when(productGroupRepository.findAll(new Sort(Sort.Direction.DESC,"count"))).thenReturn(productGroupList);
 		productGroupServiceImpl.getProductGroups();
 	}
 }
