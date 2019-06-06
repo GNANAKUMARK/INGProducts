@@ -1,5 +1,9 @@
 package com.ing.products.service;
 
-public interface ProductGroupService {
+import java.util.List;
 
+import com.ing.products.pojo.ProductGroupDTO;
+
+public interface ProductGroupService {
+	List<ProductGroupDTO> getProductGroups();
 }

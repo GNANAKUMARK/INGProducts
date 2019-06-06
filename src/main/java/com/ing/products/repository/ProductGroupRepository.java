@@ -8,4 +8,5 @@ import com.ing.products.entity.ProductGroup;
 @Repository
 public interface ProductGroupRepository extends JpaRepository<ProductGroup, Long> {
 
+	
 }
