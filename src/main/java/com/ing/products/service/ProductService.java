@@ -7,5 +7,7 @@ import com.ing.products.entity.Product;
 public interface ProductService {
 
 	List<Product> findByGroupId(Long id);
+
+	
 	
 }

@@ -3,6 +3,8 @@ package com.ing.products.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import com.ing.products.repository.ProductGroupRepository;
 
 
 @Service
+
 public class ProductGroupServiceImpl implements ProductGroupService {
 	private static final 
 	Logger LOGGER = LogManager.getLogger(ProductGroupServiceImpl.class);
@@ -33,5 +36,18 @@ public class ProductGroupServiceImpl implements ProductGroupService {
 		}
 		
 		return productGroupDTOlist;
+	}
+	
+	@Transactional
+	public int saveCount(Long groupId, Long counts) {
+		
+		
+		return productGroupRepository.save(groupId,counts);
+	}
+
+	
+	public ProductGroup findById(Long groupId) {
+		
+		return productGroupRepository.findById(groupId).orElse(null);
 	}
 }
