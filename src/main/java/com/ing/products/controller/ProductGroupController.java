@@ -40,7 +40,7 @@ public class ProductGroupController {
 	public ResponseEntity<List<ProductGroupDTO>> getProductGroups() {
 		LOGGER.info("ProductGroupController inside getProductGroups");
 		List<ProductGroupDTO> response = productGroupService.getProductGroups();
-		if (response ==null ||response.isEmpty() ||response.size()==0) {
+		if (response ==null ||response.isEmpty()) {
 			throw new DataNotFoundException("Data not found");
 		}
 		return new ResponseEntity<>(response, HttpStatus.OK);
