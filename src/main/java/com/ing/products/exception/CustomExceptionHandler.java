@@ -24,7 +24,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 	    } else if(ex instanceof BADRequestException) {
 	    	status = HttpStatus.BAD_REQUEST;
 	    }
-	    return new ResponseEntity<>(errorDetails, status );
+	    return new ResponseEntity<ErrorDetails>(errorDetails, status );
 	  }
 
 }
