@@ -7,7 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ing.products.pojo.ProductDTO;
+import com.ing.products.entity.Product;
 import com.ing.products.repository.ProductRepository;
 
 @Service
@@ -18,9 +18,11 @@ public class ProductServiceImpl implements ProductService{
 
     ProductRepository repository;
 
-    public List<ProductDTO> findByGroupId(long id) {
 
-        return repository.findByGroupId(id);
 
-    }
+	@Override
+	public List<Product> findByGroupId(Long groupId) {
+		
+		 return repository.findByGroupId(groupId);
+	}
 }

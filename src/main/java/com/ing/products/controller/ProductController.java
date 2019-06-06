@@ -4,12 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ing.products.pojo.ProductDTO;
+import com.ing.products.entity.Product;
 import com.ing.products.service.ProductService;
 
 
@@ -21,12 +22,12 @@ public class ProductController {
 
     
 
-    @GetMapping("/products/{groupid}")
+    @GetMapping(value = "/products/{groupId}",produces = MediaType.APPLICATION_JSON_VALUE)
 
-    public ResponseEntity<List<ProductDTO>> getProducts(@PathVariable("groupid") long id) {
+    public ResponseEntity<List<Product>> getProducts(@PathVariable("groupId") Long groupId) {
     	
-        List<ProductDTO> product = service.findByGroupId(id);
-        return new ResponseEntity<List<ProductDTO>>(product , HttpStatus.OK);   
+        List<Product> product = service.findByGroupId(groupId);
+        return new ResponseEntity<>(product , HttpStatus.OK);   
 
     }
 }
