@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.ing.products.entity.ProductGroup;
@@ -26,7 +27,7 @@ public class ProductGroupServiceImpl implements ProductGroupService {
 	public List< ProductGroupDTO> getProductGroups() {
 		LOGGER.info("inside getProductGroups");
 		List<ProductGroupDTO> productGroupDTOlist = new ArrayList<ProductGroupDTO>();
-		List <ProductGroup>productGroupList =  productGroupRepository.findAll();
+		List <ProductGroup>productGroupList =  productGroupRepository.findAll(new Sort(Sort.Direction.DESC,"count"));
 		for(ProductGroup productGroup:productGroupList) {
 			ProductGroupDTO ProductGroupDTO = new ProductGroupDTO();
 			ProductGroupDTO.setGroupId(productGroup.getGroupId());

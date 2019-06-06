@@ -25,14 +25,11 @@ public class ProductGroupController {
 	@Autowired
 	ProductGroupService ProductGroupService;
 
-	@GetMapping(value="/productgroups")
+	@GetMapping(value = "/productgroups")
 	public ResponseEntity<List<ProductGroupDTO>> getProductGroups() {
 		LOGGER.info("ProductGroupController inside getProductGroups");
 		List<ProductGroupDTO> response = ProductGroupService.getProductGroups();
-		return new ResponseEntity<>(response, HttpStatus.CREATED);
-		// dao.findAll(new Sort(Sort.Direction.DESC, "<colName>"));
-
-		// productRepository.findAll(new Sort(Sort.Direction.DESC,"count"));
+		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
 }
