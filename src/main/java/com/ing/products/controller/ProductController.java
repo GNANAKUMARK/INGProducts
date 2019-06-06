@@ -18,45 +18,45 @@ import com.ing.products.exception.DataNotFoundException;
 import com.ing.products.service.ProductGroupService;
 import com.ing.products.service.ProductService;
 
-
+/**
+ * Controller for Product details
+ * 
+ * @author user1
+ *
+ */
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping(path = "/api")
 public class ProductController {
-	
-	@Autowired
 
-    ProductService service;
+	@Autowired
+	ProductService service;
 
 	@Autowired
 	ProductGroupService productGroupService;
 
-    @GetMapping(value = "/products/{groupId}",produces = MediaType.APPLICATION_JSON_VALUE)
-
-    public ResponseEntity<List<Product>> getProducts(@PathVariable("groupId") Long groupId) {
-    	
-        List<Product> product = service.findByGroupId(groupId);
-        
-        if(product.isEmpty()) {
-        	throw new DataNotFoundException("Data not found");
-        }
-        
-        ProductGroup  productGroup = productGroupService.findById(groupId);
-       
-        Long counts= productGroup.getCount();
-       counts++;
-		productGroupService.saveCount(groupId,counts);
-     
-       // count(groupId);
-        return new ResponseEntity<>(product , HttpStatus.OK);   
-
-    }
-
-
-	/*
-	 * private void count(Long groupId) { Long counts = null; counts++;
-	 * productGroupService.saveCount(groupId,counts);
-	 * 
-	 * }
+	/**
+	 * Invoke service for getProducts
+	 * @param groupId
+	 * @return
 	 */
+	@GetMapping(value = "/products/{groupId}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<Product>> getProducts(@PathVariable("groupId") Long groupId) {
+
+		List<Product> product = service.findByGroupId(groupId);
+
+		if (product.isEmpty()) {
+			throw new DataNotFoundException("Data not found");
+		}
+
+		ProductGroup productGroup = productGroupService.findById(groupId);
+
+		Long counts = productGroup.getCount();
+		counts++;
+		productGroupService.saveCount(groupId, counts);
+
+		return new ResponseEntity<>(product, HttpStatus.OK);
+
+	}
+
 }
