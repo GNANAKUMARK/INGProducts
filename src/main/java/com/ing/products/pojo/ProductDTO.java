@@ -18,15 +18,14 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @AllArgsConstructor
-public class ProductGroup implements Serializable {
-
+public class ProductDTO implements Serializable {
+	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	private Long groupId;
-	private String groupName;
-	private Long groupCount;
+	private Long id;
+	private String  porductName;
+	private String productDescription;
 
 }

@@ -20,7 +20,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @NoArgsConstructor
-public class ProductDTO implements Serializable{
+public class Product implements Serializable{
 	 /**
 	 *
 	 */

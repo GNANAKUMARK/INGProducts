@@ -21,7 +21,7 @@ import lombok.Setter;
 @Getter
 @Entity
 @SuppressWarnings(value = { "all" })
-public class ProductGroupDTO implements Serializable{
+public class ProductGroup implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
